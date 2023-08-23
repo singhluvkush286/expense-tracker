@@ -1,4 +1,4 @@
-import {dashboard, transactions, trend} from '../utils/icons'
+import {dashboard, expenses, transactions, trend} from '../utils/icons'
 
 export const mmenuItems = [
     {
@@ -16,7 +16,7 @@ export const mmenuItems = [
 
     },
     {
-        id: 1,
+        id: 3,
         title: 'Incomes',
         icon: trend,
         link:'/dashboard'
@@ -25,7 +25,7 @@ export const mmenuItems = [
     {
         id: 4,
         title: 'Expenses',
-        icon: trend,
+        icon: expenses,
         link:'/dashboard'
 
     }
