@@ -6,42 +6,41 @@ import Form from '../Form.js/Form';
 import IncomeItem from '../IncomeItem/IncomeItem';
 
 function Incomes() {
-  const {addIncome, incomes, getIncome, deleteIncome } = useGlobalContext()
+  const {addIncome,incomes, getIncome, deleteIncome, totalIncome} = useGlobalContext()
 
   useEffect(() =>{
     getIncome()
   },[])
   return (
     <IncomeStyled>
-      <InnerLayout>
-            <InnerLayout>
-                <h1>Incomes</h1>
-                <div className='income-content'>
-                    <div className='form-container'>
-                      <Form/>
-                    </div>
-                    <div className='incomes'>
-                      {incomes.map((income) => {
-                        const {__id, title, amount, date, category, description} = income;
-                        return <IncomeItem 
-                               key={__id}
-                               id={__id}
-                               title={title}
-                               description={description}
-                               amount={amount}
-                               category={category}
-                               indicatorColor={"var(--color-green)"}
-                               deleteItem={deleteIncome}
-                        />
-                      })}
-                    </div>
+        <InnerLayout>
+            <h1>Incomes</h1>
+            <h2 className="total-income">Total Income: <span>${totalIncome()}</span></h2>
+            <div className="income-content">
+                <div className="form-container">
+                    <Form />
                 </div>
-
-            </InnerLayout>
+                <div className="incomes">
+                    {incomes.map((income) => {
+                        const {_id, title, amount, date, category, description, type} = income;
+                        return <IncomeItem
+                            key={_id}
+                            id={_id} 
+                            title={title} 
+                            description={description} 
+                            amount={amount} 
+                            date={date} 
+                            type={type}
+                            category={category} 
+                            indicatorColor="var(--color-green)"
+                            deleteItem={deleteIncome}
+                        />
+                    })}
+                </div>
+            </div>
         </InnerLayout>
     </IncomeStyled>
-        
-  )
+)
 }
 
 const IncomeStyled = styled.div`
